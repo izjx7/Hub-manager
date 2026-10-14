@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB Steam Manager</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- الشريط العلوي والتسجيل -->
+        <header class="header-bar">
+            <div class="logo-area">
+                <h1>HUB Steam Manager</h1>
+            </div>
+            <div class="profile-area">
+                <span id="welcome-msg" style="color: #a1a1aa; font-size: 14px;">مرحباً بك</span>
+                <input type="text" id="username-input" placeholder="اسم الحساب...">
+                <button class="btn btn-primary btn-sm" id="save-profile-btn">حفظ</button>
+            </div>
+        </header>
+
+        <!-- شريط الأدوات الرئيسي مع زر OpenSteamTool -->
+        <div class="toolbar" id="main-toolbar">
+            <button class="btn btn-primary" id="scan-btn">🔍 بحث تلقائي عن ألعاب ستيم</button>
+            <button class="btn" id="add-manual-btn">📁 إضافة لعبة يدوياً (.exe)</button>
+            <button class="btn" id="open-tool-btn" style="background-color: #0d9488; border-color: #0d9488;">⚙️ OpenSteamTool</button>
+        </div>
+
+        <!-- لوحة OpenSteamTool مع الفحص والتثبيت التلقائي -->
+        <div id="opensteam-modal-view" class="large-content-panel" style="display: none;">
+            <h2>⚙️ أداة OpenSteamTool (إضافة مباشرة لمكتبة Steam)</h2>
+            
+            <!-- قسم حالة التثبيت -->
+            <div id="tool-install-status-box" style="background: #121215; border: 1px solid #27272a; padding: 12px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <span id="tool-install-text" style="font-size: 13px; color: #a1a1aa;">جاري التحقق من ملفات الأداة في ستيم...</span>
+                <button class="btn btn-sm btn-primary" id="btn-install-tool" style="display: none;">📥 تثبيت الملفات الآن</button>
+            </div>
+
+            <p style="color:#a1a1aa; font-size:13px; margin-bottom:15px;">
+                أدخل رقم الـ AppID الخاص باللعبة لتظهر في مكتبة Steam فوراً.
+            </p>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                <input type="text" id="tool-appid-input" class="mods-search-input" placeholder="أدخل AppID اللعبة (مثال: 730)">
+                <button class="btn btn-primary" id="tool-apply-direct-btn">⚡ حقن وإضافة إلى Steam</button>
+                <button class="btn" id="tool-close-btn">إغلاق</button>
+            </div>
+            
+            <div id="tool-status-msg" style="margin-top: 12px; font-size: 13px; font-weight: 600;"></div>
+        </div>
+
+        <!-- عرض مكتبة الألعاب الرئيسي -->
+        <main id="library-view">
+            <h2>📚 مكتبة الألعاب</h2>
+            <div id="games-list">
+                <p style="color:#a1a1aa;">اضغط على زر "بحث تلقائي" للتعرف على الألعاب المثبتة لديك.</p>
+            </div>
+        </main>
+
+        <!-- عرض تفاصيل اللعبة والمودات والباتشات -->
+        <div id="game-details-view" style="display: none;">
+            <button class="btn" id="back-to-library-btn" style="margin-bottom: 15px;">⬅️ العودة للمكتبة</button>
+
+            <!-- الهيرو بانر الخاص باللعبة -->
+            <div class="game-hero-wrapper" id="game-hero-container">
+                <div class="game-hero-overlay"></div>
+                <div class="game-details-container">
+                    <div class="game-banner">
+                        <img id="detail-image" src="" alt="Game Banner">
+                    </div>
+                    <div class="game-info">
+                        <h1 id="detail-title" style="font-size: 28px; color: #fff; margin-bottom: 8px;">اسم اللعبة</h1>
+                        <p id="detail-id" style="color: #10b981; font-weight: 600; margin-bottom: 12px;">App ID: ---</p>
+                        <p id="detail-desc" style="color: #a1a1aa; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">وصف اللعبة...</p>
+                        
+                        <div class="game-actions-grid">
+                            <button class="btn btn-primary" id="btn-show-mods">🧩 تصفح المودات والباتشات والمحاكيات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- حاوية المودات والتبويبات -->
+            <div id="sub-content-box" class="large-content-panel" style="display: none;"></div>
+
+            <!-- قسم الإنجازات -->
+            <div class="large-content-panel" style="margin-top: 25px;">
+                <h2>🏆 إنجازات اللعبة (Steam Achievements)</h2>
+                <div id="achievements-container" class="achievements-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

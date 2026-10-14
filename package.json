@@ -1,0 +1,18 @@
+{
+  "name": "hub-steam-manager",
+  "version": "1.0.0",
+  "description": "A custom Steam library and mods manager",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "axios": "^1.7.0",
+    "cheerio": "^1.2.0",
+    "vdf-parser": "^1.2.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0"
+  }
+}
