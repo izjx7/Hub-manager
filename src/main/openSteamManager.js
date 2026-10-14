@@ -5,7 +5,7 @@ const axios = require('axios');
 // إصدار التطبيق الحالي
 const currentAppVersion = '1.0.0';
 // رابط ملف الـ version.json على مستودع GitHub الخاص بك
-const VERSION_CHECK_URL = 'https://raw.githubusercontent.com/izjx7/HUB-Steam-Manager/main/version.json';
+const VERSION_CHECK_URL = 'https://raw.githubusercontent.com/izjx7/Hub-manager/main/version.json';
 
 // البحث عن مسار ستيم في الجهاز
 function getSteamPath() {
